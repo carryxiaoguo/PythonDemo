@@ -8,10 +8,20 @@ finally：无论是否异常都执行（常用于资源清理）。
 
 try-catch-finally 类比Java
 """
-# yich
+import json
 
-
-
-
-
-
+# 示例代码
+ex_json= '{"name": "Alice", "age": }'  #错误示例
+try:
+    data=json.loads(ex_json)
+    name_ = ex_json["name"]
+except json.decoder.JSONDecodeError as e:
+    print(f"Json解析失败: {e}")
+except KeyError as e:
+    print("Json key error: {e}")
+except Exception as e:
+    print("Json error: {e}")
+else:
+    print(f"解析成功: {name_}")
+finally:
+    print("处理完成，释放资源")
